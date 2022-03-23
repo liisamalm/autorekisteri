@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Autorekisteri</title>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+
+        <h1>Autorekisteri</h1>
+        <h2> Rekisteröi tiedot alla olevista linkeistä:</h2>
+        <p>
+            <a th:href="@{/autot}">Lisää auto</a><br/>
+            <a th:href="@{/omistajat}">Lisää omistaja</a><br/>
+            <a th:href="@{/lista}">Listaus omistajista ja autoista</a><br/>
+        </p>
+
+        <!--<h2>Autorekisteri</h2>
+
+            <table style="width:100%">
+            <tr>
+                <th>Omistajan nimi</th>
+                <th>rekisterinumero</th>
+                <th>merkki</th>
+                <th>malli</th>
+                <th>Valmistusvuosi</th>
+            </tr>
+            <tr th:each="autot: ${omistaja.autot}">
+                <td th:text="${omistaja.etunimi + ' ' + omistaja.sukunimi}">omistajan nimi</td>
+                <td th:utext="${auto.rekisterinumero}">rekisterinumero</td>
+                <td th:utext="${auto.merkki}">merkki</td>
+                <td th:utext="${auto.malli}">malli</td>
+                <td th:utext="${auto.valmistusvuosi}">valmistusvuosi</td>
+            </tr>
+            </table>-->
+
+        
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Autot</title>
+        <style>
+            table, th, td {
+              border:2px solid black;
+            }
+            th {
+                background-color: lightgrey;
+            }
+            </style>  
+    </head>
+    <body>
+
+        <h1>Autojen lisäys:</h1>
+
+        <form th:action="@{/autot}" method="POST">
+            <p>Valmistenumero:<br> <input name="valmistenumero"></input></p>
+            <p>Rekisterinumero:<br> <input name="rekisterinumero"></input></p>
+            <p>Merkki:<br> <input name="merkki"></input></p>
+            <p>Malli:<br> <input name="malli"></input></p>
+            <p>Valmistusvuosi:<br> <input name="valmistusvuosi"></input></p>
+            
+            <input type="submit" value="Lisää auto"></input>
+        </form>
+
+       
+        <p><a th:href="@{/index}">Palaa pääsivulle</a></p>
+       
+        <h2>Autorekisteri</h2>
+        
+            <table style="width:100%">
+            <tr>
+                <th>Valmistenumero</th>
+                <th>Rekisterinumero</th>
+                <th>Merkki</th>
+                <th>Malli</th>
+                <th>Valmistusvuosi</th>
+            </tr>
+            <tr th:each="auto : ${autot}">
+                <td th:text="${auto.valmistenumero}">tekija etunimi</td>
+                <td th:utext="${auto.rekisterinumero}">rekisterinumero</td>
+                <td th:utext="${auto.merkki}">merkki</td>
+                <td th:utext="${auto.malli}">malli</td>
+                <td th:utext="${auto.valmistusvuosi}">valmistusvuosi</td>
+            </tr>
+            </table>
+
+    </body>
+</html>

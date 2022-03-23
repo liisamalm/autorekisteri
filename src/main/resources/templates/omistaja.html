@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Omistaja</title>
+        <style>
+            table, th, td {
+              border:2px solid black;
+            }
+            th {
+                background-color: lightgrey;
+            }
+            li {
+                padding-top: 0.5em;
+            }
+            </style>  
+    </head>
+    <body>
+
+        <h1 th:text="${omistaja.etunimi + ' ' + omistaja.sukunimi}">Omistajan nimi</h1>
+
+        <h2>Lisää <span th:text="${omistaja.etunimi}"></span>:n nimiin auto listasta:</h2>
+
+        <ul>
+            <li th:each="auto: ${autot}">
+                <span th:text="${auto.rekisterinumero + ', ' + auto.merkki + ', ' + auto.valmistusvuosi}">rekisterinumero</span>
+                <form th:action="@{/omistajat/{omistajaId}/autot/{autoId}(omistajaId=${omistaja.id},autoId=${auto.id})}" method="POST">
+                    <input type="submit" value="Lisää auto"></input>
+                </form>
+            </li>
+        </ul>
+    
+        <h2><span th:text="${omistaja.etunimi}"></span>:n autot:</h2>
+
+         <table style="width:100%">
+            <tr>
+                <th>Omistajan nimi</th>
+                <th>Rekisterinumero</th>
+                <th>Merkki</th>
+                <th>Malli</th>
+                <th>Valmistusvuosi</th>
+            </tr>
+            <tr th:each="auto: ${omistaja.autot}">
+                <td th:utext="${omistaja.etunimi + ' ' + omistaja.sukunimi}">omistajan nimi</td>
+                <td th:utext="${auto.rekisterinumero}">rekisterinumero</td>
+                <td th:utext="${auto.merkki}">merkki</td>
+                <td th:utext="${auto.malli}">malli</td>
+                <td th:utext="${auto.valmistusvuosi}">valmistusvuosi</td>
+            </tr>
+            </table>
+   
+            <p><a th:href="@{/index}">Palaa pääsivulle</a></p>
+            <p><a th:href="@{/omistajat}">Palaa omistajiin</a></p>
+            <p><a th:href="@{/lista}">Kaikkien autojen listaus</a></p>
+        
+    </body>
+</html>

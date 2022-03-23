@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Kaikkien listaus</title>
+        <style>
+             table, th, td {
+              border:2px solid black;
+            }
+            th {
+                background-color: lightgrey;
+            }
+            </style>  
+    </head>
+    <body>
+
+        <h1>Autot</h1>
+
+        <h2>Kaikki autot ja niiden omistajat</h2>
+
+        <table style="width:100%">
+            
+            <tr>
+                <th>Omistaja</th>
+                <th>Rekisterinumero</th>
+                <th>Merkki</th>
+                <th>Malli</th>
+                <th>Valmistusvuosi</th>
+            </tr>
+            <span th:each="auto: ${autot}">
+            <tr th:each="omistaja: ${auto.omistajat}">
+                <td th:text="${omistaja.etunimi + ' ' + omistaja.sukunimi}">omistaja nimi</td>  
+                <td th:utext="${auto.rekisterinumero}">rekisterinumero</td>
+                <td th:utext="${auto.merkki}">merkki</td>
+                <td th:utext="${auto.malli}">malli</td>
+                <td th:utext="${auto.valmistusvuosi}">valmistusvuosi</td>
+            </tr>
+            </span>
+        </table>
+
+      
+            <p><a th:href="@{/index}">Palaa pääsivulle</a></p>
+            <p><a th:href="@{/omistajat}">Palaa omistajiin</a></p>
+    </body>
+</html>

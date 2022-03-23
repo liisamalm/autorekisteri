@@ -1,0 +1,33 @@
+
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Omistajat</title>
+    </head>
+    <body>
+ 
+        <h1>Lisää omistajan tiedot</h1>
+ 
+        <form th:action="@{/omistajat}" method="POST">
+            <p>Etunimi: <input name="etunimi"></input></p>
+            <p>Sukunimi: <input name="sukunimi"></input></p>
+            <input type="submit" value="Lisää"></input>
+        </form>
+
+        <h1>Autojen omistajat</h1>
+ 
+        <ul>
+            <li th:each="omistaja : ${omistajat}">
+                <a th:href="@{/omistajat/{id}(id=${omistaja.id})}">
+                    <span th:text="${omistaja.etunimi + ' ' + omistaja.sukunimi}">etunimi ja sukunimi</span>
+                </a>
+            </li>
+        </ul>
+
+        <p><a th:href="@{/index}">Palaa pääsivulle</a></p>
+        <p><a th:href="@{/autot}">Lisää auto</a></p>
+
+    </body>
+</html>
+ 
